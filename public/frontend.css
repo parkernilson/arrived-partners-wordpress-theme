@@ -381,6 +381,14 @@ mark, ins {
 big {
   font-size: 125%; }
 
+@use "../variables-site/colors";
+a {
+  color: #fff; }
+  a:hover {
+    color: gray; }
+  a:visited {
+    color: #fff; }
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -518,11 +526,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: #fff; }
   a:visited {
-    color: purple; }
+    color: #fff; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: gray; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -732,13 +740,29 @@ a {
 /*--------------------------------------------------------------
 ## Arrived Partners css
 --------------------------------------------------------------*/
-/**
- * calculate an em value based on pixel percentages
- */
 @use "../variables-site/structure";
 @use "../variables-site/responsive";
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 32px; }
+
+.site-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4vw;
+  margin: 0; }
+
+[class^="wp-block-"] {
+  margin-bottom: 60px; }
+
+.wp-block-column,
+.wp-block-media-text__content {
+  margin-bottom: 0; }
+
+.wp-block-image {
+  margin-bottom: 0; }
+
+.title-container {
+  display: flex;
+  align-items: center; }
 
 .logo-container {
   width: 8vw;
@@ -750,18 +774,27 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center; }
 
 #sidebar-menu {
-  background: #2c3e50;
+  background: #fff;
   position: fixed;
-  padding: 0 64px;
+  padding: 0 24px;
   height: 100%;
+  max-width: 600px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-  z-index: 10;
+  z-index: 2000;
   transform: translate(-150%, 0px);
   transition: all 0.75s ease-in-out; }
   #sidebar-menu.toggled {
     -webkit-transform: translate(0%, 0px);
     transform: translate(0%, 0px);
     transition: all 0.75s ease-in-out; }
+  #sidebar-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    #sidebar-menu ul a, #sidebar-menu ul p, #sidebar-menu ul h1, #sidebar-menu ul h2, #sidebar-menu ul h3, #sidebar-menu ul h4, #sidebar-menu ul h5, #sidebar-menu ul h6 {
+      color: #404040; }
+  #sidebar-menu .menu-main-nav-container {
+    margin: 0; }
 
 .menu-toggle {
   width: 24px;
@@ -770,7 +803,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000; }
 
 @media screen and (max-width: 640px) {
-  .menu-main-nav-container {
+  .site-header.menu-main-nav-container {
     display: none; } }
 
 .main-navigation-container {
@@ -778,32 +811,53 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: row-reverse;
   width: 100%; }
 
+ul.menu li {
+  margin: 24px; }
+  @media screen and (max-width: 960px) {
+    ul.menu li {
+      margin: 8px;
+      font-size: .8rem; } }
+
 .inquiry-form {
   max-width: 800px;
-  min-width: 400px;
+  min-width: 250px;
   margin-left: auto;
   margin-right: auto;
   padding-right: 24px;
   padding-left: 24px; }
+  @media screen and (max-width: 640px) {
+    .inquiry-form {
+      padding-right: 0;
+      padding-left: 0; } }
 
 .form-flex-row {
   display: flex;
   margin: 0; }
-  .form-flex-row input {
+  .form-flex-row .wpcf7-form-control-wrap {
     flex-grow: 1; }
 
 .form-section-1 {
   margin-bottom: 24px; }
+  .form-section-1 input {
+    width: 100%; }
+
+.wpcf7-form-control-wrap input::before {
+  content: "Yr Build";
+  margin-right: 10px; }
 
 .form-section-2 {
   display: flex;
   margin-bottom: 24px; }
+  .form-section-2 input {
+    width: 100%; }
   .form-section-2 .option-1 {
+    flex-basis: 3;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center; }
   .form-section-2 .separator {
+    flex-basis: 1;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -813,21 +867,44 @@ h1, h2, h3, h4, h5, h6 {
     .form-section-2 .separator .or {
       text-align: center; }
   .form-section-2 .option-2 {
-    flex-grow: 1; }
-    @media screen and (max-width: 640px) {
-      .form-section-2 .option-2 .form-flex-row {
-        display: contents; } }
+    flex-grow: 1;
+    flex-basis: 50%;
+    display: inline-grid;
+    grid-template-columns: 50% 50%; }
+    .form-section-2 .option-2 input {
+      width: 100%; }
+    .form-section-2 .option-2 br {
+      display: none; }
+    @media screen and (max-width: 1200px) {
+      .form-section-2 .option-2 {
+        grid-template-columns: auto; } }
+  @media screen and (max-width: 640px) {
+    .form-section-2 {
+      flex-direction: column; } }
 
 .submit-container {
   display: flex;
   flex-direction: row-reverse; }
 
 .site-header {
+  background-color: black;
   padding-left: 24px;
   padding-right: 24px;
   display: flex;
-  position: absolute;
-  width: 100%; }
+  position: relative;
+  width: 100%;
+  z-index: 1000; }
+  @media screen and (max-width: 640px) {
+    .site-header {
+      padding-left: 12px;
+      padding-right: 12px; } }
+  .site-header a {
+    color: #fff;
+    text-decoration: none; }
+
+.home .site-header, .page-template-page-impact .site-header {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute; }
 
 .front-page .entry-header {
   display: none; }
@@ -865,7 +942,8 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     margin-top: 0;
     margin-bottom: 12px;
-    margin-left: 6px;
+    opacity: 30%;
+    margin-left: 24px;
     color: white; }
     @media screen and (max-width: 640px) {
       .front-page .splash-container .splash-tooltip {
@@ -875,9 +953,15 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 24px;
   padding-right: 24px; }
 
-.entry-content {
+article {
   padding-left: 24px;
-  padding-right: 24px;
+  padding-right: 24px; }
+  @media screen and (max-width: 640px) {
+    article {
+      padding-left: 12px;
+      padding-right: 12px; } }
+
+.entry-content {
   margin-left: auto;
   margin-right: auto;
   max-width: 960px; }
@@ -888,11 +972,7 @@ h1, h2, h3, h4, h5, h6 {
 body.page {
   margin: 0; }
 
-article.page {
-  background-image: url("https://github.com/parkernilson/ArrivedPartners.com/blob/master/Red%20Rocks%20v2.0.png?raw=true");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
+.home article.page {
   margin-bottom: 0px; }
 
 .site-content {
@@ -907,25 +987,53 @@ article.page {
   background-color: black;
   height: 400px;
   padding: 24px; }
+  @media screen and (max-width: 640px) {
+    .site-footer {
+      padding: 12px; } }
+  .site-footer a {
+    text-decoration: none;
+    color: #fff; }
+    .site-footer a:hover {
+      color: gray; }
+    .site-footer a:visited {
+      color: #fff; }
 
 html {
   margin: 0; }
 
 .site-info {
-  display: flex; }
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .site-info [class^="col"] {
+    width: 100%; }
 
-.footer-col.col1 {
-  width: 50%; }
+.col1 {
+  width: 50%;
+  grid-column: 1 / 2; }
+  @media screen and (max-width: 640px) {
+    .col1 {
+      display: none; } }
 
-.footer-col.col2 {
+.col2 {
   width: 25%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  grid-column: 3 / 3; }
+  @media screen and (max-width: 640px) {
+    .col2 {
+      grid-column: 1 / 2; } }
 
-.footer-col.col3 {
+.col3 {
   width: 25%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  grid-column: 4 / 4; }
+  @media screen and (max-width: 640px) {
+    .col3 {
+      grid-column: 3 / 4; } }
+
+.dark-text {
+  color: black; }
 
 /*--------------------------------------------------------------
 # Infinite scroll

@@ -5,8 +5,6 @@
  * navigation support for dropdown menus.
  */
 (function() {
-  //TODO: I don't know how to make this work.
-
   var sidebarMenu, container, button, menu, links, i, len;
 
   container = document.getElementById('site-navigation');
@@ -35,7 +33,6 @@
 
   // button.onclick = function() {
   button.addEventListener("click", function() {
-    console.log('click!')
     if (-1 !== sidebarMenu.className.indexOf('toggled')) {
       // container.className = container.className.replace(' toggled', '');
       sidebarMenu.className = sidebarMenu.className.replace(' toggled', '');
@@ -50,6 +47,8 @@
       sidebarMenu.setAttribute('aria-expanded', 'true');
     }
   })
+  
+
 
   //TODO: I don't know what this does.
   // // Get all the link elements within the menu.

@@ -26,25 +26,23 @@
 
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
-			<div class="logo-container">
-				<?php the_custom_logo(); ?>
+			<div class="title-container">
+				<div class="logo-container">
+					<?php the_custom_logo(); ?>
+				</div>
+				<?php
+				if ( is_front_page() ) :
+				// if ( is_front_page() && is_home() ) :
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+				else :
+					?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<?php
+				endif;
+				?>
 			</div>
-			<?php
-			if ( is_front_page() ) :
-			// if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$arrivedpartners_description = get_bloginfo( 'description', 'display' );
-			if ( $arrivedpartners_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $arrivedpartners_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
 		</div><!-- .site-branding -->
 
 		<div class="main-navigation-container">
@@ -66,6 +64,7 @@
 	</header><!-- #masthead -->
 
 	<div id="sidebar-menu" aria-expanded='false'>
+		<h2>Menu</h2>
 		<?php
 		wp_nav_menu( array(
 			'theme_location' => 'menu-1',

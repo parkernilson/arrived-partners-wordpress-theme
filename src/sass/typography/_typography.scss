@@ -6,6 +6,7 @@
 // 	src: url('https://github.com/parkernilson/ArrivedPartners.com/blob/master/fonts/Basis_Grotesque_Pro/BasisGrotesquePro-Regular.ttf?raw=true');
 // }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap'); 
+@import "../variables-site/responsive";
 
 body,
 button,
@@ -23,3 +24,5 @@ textarea {
 
 @import "headings";
 @import "copy";
+
+@import "links";

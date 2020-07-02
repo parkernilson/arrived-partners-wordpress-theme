@@ -15,18 +15,18 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<div class="footer-col col1">
+			<div class="col1">
 				<div class="logo-container">
 					<?php the_custom_logo(); ?>
 				</div>
 			</div>
-			<div class="footer-col col2">
+			<div class="col2">
 				<h3>Company</h3>
 				<a href=""><p>FAQ</p></a>
 				<a href=""><p>Two Beta</p></a>
 				<a href=""><p>Privacy</p></a>
 			</div>
-			<div class="footer-col col3">
+			<div class="col3">
 				<h3>Get in touch</h3>
 				<p>(480) 624 - 5200</p>
 				<p>hello@arrivedpartners.com</p>
